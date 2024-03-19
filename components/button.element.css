@@ -1,8 +1,16 @@
 button {
   color: white;
-  background: black;
+  background: red;
   outline: none;
   border: none;
   padding-block: 1em;
   padding-inline: 2em;
+  font-size: 300%;
+  margin: auto;
+  display: block;
+}
+
+button:hover {
+  background: lime;
+  cursor: pointer;
 }

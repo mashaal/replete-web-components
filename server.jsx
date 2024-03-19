@@ -1,6 +1,7 @@
 import { Hono } from '@kyiro/hono';
 import { serveStatic } from '@kyiro/hono/middleware';
 import { hmrMiddleware, LiveReloadScript } from './hmr.jsx';
+import Button from './components/Button.jsx';
 
 // routes
 import homepage from './routes/homepage.jsx';
@@ -12,7 +13,7 @@ const app = new Hono();
 
 app.use('/components/*', serveStatic({ root: './' }));
 app.use('/images/*', serveStatic({ root: './' }));
-app.get('/hmr', hmrMiddleware());
+// app.get('/hmr', hmrMiddleware());
 
 app.route('/', homepage);
 app.route('/explora', explora);
@@ -27,6 +28,7 @@ export const Layout = (props) => {
         <link rel="stylesheet" href="/components/global.css" />
       </head>
       <body>
+        <Button>CLICK ME</Button>
         <a id="internot" href="/">
           <svg
             viewBox="0 0 100 100"
@@ -53,7 +55,7 @@ export const Layout = (props) => {
         </a>
         {props.children}
       </body>
-      <LiveReloadScript />
+      {/* <LiveReloadScript /> */}
     </html>
   );
 };
