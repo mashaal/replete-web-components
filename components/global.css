@@ -45,7 +45,8 @@ img {
   z-index: 0;
   position: relative;
   margin: 2vw auto;
-  background-image: url(/images/planet.svg), radial-gradient(#111, transparent);
+  background-image: url(https://waxvinylrecords.co.uk/wp-content/uploads/16011147.jpg),
+    radial-gradient(#111, transparent);
 }
 
 h1 {
