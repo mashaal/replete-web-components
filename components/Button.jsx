@@ -1,5 +1,5 @@
 import { template } from './button.element.js';
-import { raw } from '@kyiro/hono/html';
+import { raw } from 'https://esm.sh/hono/html';
 
 /**
  * @type {import("hono/jsx").FC}
