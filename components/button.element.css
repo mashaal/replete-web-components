@@ -3,11 +3,13 @@ button {
   background: red;
   outline: none;
   border: none;
-  padding-block: 1em;
-  padding-inline: 2em;
+  padding-block: 0.5em;
+  padding-inline: 1em;
+  border-radius: 1em;
   font-size: 300%;
   margin: auto;
   display: block;
+  font-family: 'Proto';
 }
 
 button:hover {
