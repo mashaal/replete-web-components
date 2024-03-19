@@ -4,18 +4,16 @@
     "dev": "deno run --allow-net --allow-read --allow-env --unstable-hmr server.jsx"
   },
   "imports": {
+    "@kyiro/hono": "jsr:@kyiro/hono@^0.1.1",
     "acorn": "npm:acorn",
     "acorn-walk": "npm:acorn-walk",
-    "hono": "https://deno.land/x/hono@v4.0.10/mod.ts",
-    "hono/middleware": "https://deno.land/x/hono@v4.0.10/middleware.ts",
-    "hono/html": "https://deno.land/x/hono@v4.0.10/helper/html/index.ts",
-    "hono/jsx": "https://deno.land/x/hono@v4.0.10/jsx/index.ts",
-    "hono/jsx/jsx-runtime": "https://deno.land/x/hono@v4.0.10/jsx/jsx-runtime.ts"
+    "hono/jsx/jsx-runtime": "https://deno.land/x/hono/jsx/jsx-runtime.ts",
+    "md4w": "https://esm.sh/md4w"
   },
   "compilerOptions": {
     "lib": ["deno.ns", "dom"],
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
-    "checkJs": true
+    "checkJs": false
   }
 }
