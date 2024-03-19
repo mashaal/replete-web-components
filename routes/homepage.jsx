@@ -1,6 +1,6 @@
 import { Hono } from '@kyiro/hono';
 import { init, mdToHtml } from 'md4w';
-import { raw } from '@kyiro/hono/html';
+import { raw } from '../components/utils.js';
 import { Layout } from '../server.jsx';
 
 await init();

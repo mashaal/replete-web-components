@@ -1,6 +1,6 @@
 const html = String.raw;
 
-const css = './components/button.element.css';
+const css = import.meta.resolve('./button.element.css');
 
 const template = html`<link rel="stylesheet" href="${css}" />
   <button>
