@@ -7,14 +7,15 @@
     "@kyiro/hono": "jsr:@kyiro/hono@^0.1.1",
     "acorn": "npm:acorn",
     "acorn-walk": "npm:acorn-walk",
-    "hono/jsx": "https://esm.sh/hono/jsx",
-    "hono/jsx/jsx-runtime": "https://deno.land/x/hono/jsx/jsx-runtime.ts",
-    "md4w": "https://esm.sh/md4w"
+    "hono/jsx": "https://esm.sh/hono@v4.1.2/jsx",
+    "hono/jsx/jsx-runtime": "https://esm.sh/hono@v4.1.2/jsx/jsx-runtime",
+    "hono/jsx-runtime": "https://esm.sh/hono@v4.1.2/jsx/jsx-runtime",
+    "md4w": "https://esm.sh/md4w@0.2.6"
   },
   "compilerOptions": {
     "lib": ["deno.ns", "dom"],
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
-    "checkJs": false
+    "checkJs": true
   }
 }

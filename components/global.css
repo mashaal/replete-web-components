@@ -45,13 +45,12 @@ img {
   z-index: 0;
   position: relative;
   margin: 2vw auto;
-  background-image: url(https://waxvinylrecords.co.uk/wp-content/uploads/16011147.jpg),
-    radial-gradient(#111, transparent);
+  background-image: url(/images/planet.svg), radial-gradient(#111, transparent);
 }
 
 h1 {
   text-transform: uppercase;
-  font-size: 18vw;
+  font-size: clamp(2rem, 18vw, 12rem);
   margin: 0;
   line-height: 1;
   font-family: 'Proto';
@@ -63,7 +62,7 @@ h1 {
 
 nav {
   font-weight: 100;
-  font-size: 5.5vw;
+  font-size: clamp(1rem, 3vw, 5rem);
   display: flex;
   justify-content: space-around;
   text-align: center;

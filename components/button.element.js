@@ -1,32 +1,19 @@
-const html = String.raw;
+import { resolve, tag as html, defineElement } from './utils.js';
 
-const css = import.meta.resolve('./button.element.css');
+const css = resolve('./components/button.element.css');
 
 const template = html`<link rel="stylesheet" href="${css}" />
   <button>
     <slot></slot>
   </button>`;
 
-export { template };
+defineElement('ex-button', template, {
+  connected(element) {
+    const button = element?.shadowRoot?.querySelector('button');
+    button?.addEventListener('click', () => {
+      confirm('🐦‍🔥');
+    });
+  },
+});
 
-if (typeof document !== 'undefined') {
-  class ExButton extends HTMLElement {
-    constructor() {
-      super();
-      let shadow = this.attachInternals().shadowRoot;
-      if (!shadow) {
-        shadow = this.attachShadow({ mode: 'open' });
-        shadow.innerHTML = template;
-      }
-    }
-    connectedCallback() {
-      const button = this?.shadowRoot?.querySelector('button');
-      button?.addEventListener('click', () => {
-        confirm('🐦‍🔥');
-      });
-    }
-  }
-  if (!customElements.get('ex-button')) {
-    customElements.define('ex-button', ExButton);
-  }
-}
+export { template };

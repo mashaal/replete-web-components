@@ -17,7 +17,8 @@ const Button = (props) => {
 };
 
 export default Button;
+
 //demo import React from 'https://esm.sh/react';
 //demo import { renderToStaticMarkup } from 'https://esm.sh/react-dom/server';
-//demo const string = renderToStaticMarkup(<Button>Click me pls</Button>);
+//demo const string = renderToStaticMarkup(<><Button>Clicks</Button><Button>3333</Button></>);
 //demo document.body.innerHTML = string;

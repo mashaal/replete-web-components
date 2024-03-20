@@ -1,3 +1,5 @@
+// @ts-nocheck x
+
 import run from 'https://deno.land/x/replete/run.js';
 import initSwc, { transformSync } from 'https://esm.sh/@swc/wasm-web';
 import ecomcon from 'https://raw.githubusercontent.com/douglascrockford/ecomcon/master/ecomcon.js';
@@ -14,7 +16,7 @@ function compile_jsx(command) {
 }
 
 run({
-  deno_args: ['--allow-all'],
+  deno_args: ['--allow-all', '--config', './deno.json'],
   locate(specifier, parent_locator) {
     return Promise.resolve(
       specifier.startsWith('.')

@@ -9,11 +9,57 @@ import explora from './routes/explora.jsx';
 import logs from './routes/logs.jsx';
 import finances from './routes/finances.jsx';
 
+// minify js
+import minify from 'npm:@node-minify/core';
+import uglifyjs from 'npm:@node-minify/uglify-js';
+
+// preload headers
+// import resolveLinkRelations from 'npm:modulepreload-link-relations/resolveLinkRelations.mjs';
+// import formatLinkHeaderRelations from 'npm:modulepreload-link-relations/formatLinkHeaderRelations.mjs';
+
 const app = new Hono();
+
+// app.get('/hmr', hmrMiddleware());
+
+app.use('/components/:filename{.+\\.js$}', async (c, next) => {
+  const url = new URL(c.req.url, 'http://localhost');
+  // quick js file server
+  if (url) {
+    const static_path = '.';
+    const filePath = static_path + url.pathname;
+    let file;
+    try {
+      file = await Deno.readTextFile(filePath);
+    } catch {
+      // ignore
+    }
+    if (file) {
+      // @ts-ignore missing types from minify lib
+      file = await minify({
+        compressor: uglifyjs,
+        content: file,
+      });
+      file = file.replaceAll('import.meta.resolve', '');
+      // build modulepreload headers
+      // const linkRelations = await resolveLinkRelations({
+      //   appPath: static_path,
+      //   url: filePath,
+      // });
+
+      /** @type {Object.<string, string>} */
+      const headers = {
+        'content-type': 'text/javascript',
+      };
+      // if (linkRelations) {
+      //   headers.link = formatLinkHeaderRelations(linkRelations);
+      // }
+      return new Response(file, { headers });
+    } else await next();
+  }
+});
 
 app.use('/components/*', serveStatic({ root: './' }));
 app.use('/images/*', serveStatic({ root: './' }));
-// app.get('/hmr', hmrMiddleware());
 
 app.route('/', homepage);
 app.route('/explora', explora);
@@ -25,10 +71,10 @@ export const Layout = (props) => {
     <html>
       <head>
         <title>Internot</title>
-        <link rel="stylesheet" href="/components/global.css" />
+        <link rel="stylesheet" href={'/components/global.css'} />
       </head>
       <body>
-        <Button>CLICK ME</Button>
+        <Button>xxx</Button>
         <a id="internot" href="/">
           <svg
             viewBox="0 0 100 100"
